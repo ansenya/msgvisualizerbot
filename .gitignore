@@ -1,2 +1,3 @@
-/bg/
-/db/
+.venv
+database.db
+.idea

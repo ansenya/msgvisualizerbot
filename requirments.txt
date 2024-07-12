@@ -1,0 +1,5 @@
+Pillow
+python-telegram-bot
+selenium
+Jinja2
+pyvirtualdisplay
