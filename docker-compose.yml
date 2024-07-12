@@ -1,0 +1,41 @@
+services:
+  bot:
+    container_name: msgvis-bot
+    image: arsanoshin/msgvis-bot
+    networks:
+      - msgvis
+    environment:
+      TOKEN: token
+      FLASK_PATH: msgvis-bg:5000
+    volumes:
+      - bg:/app/bg
+      - db:/app/db
+    restart: always
+
+  background:
+    container_name: msgvis-bg
+    image: arsanoshin/msgvis-bg
+    networks:
+      - msgvis
+    volumes:
+      - bg:/app/bg
+    restart: always
+
+networks:
+  msgvis:
+    driver: bridge
+
+volumes:
+  bg:
+    driver: local
+    driver_opts:
+      type: 'none'
+      o: 'bind'
+      device: './bg'
+
+  db:
+    driver: local
+    driver_opts:
+      type: 'none'
+      o: 'bind'
+      device: './db'
